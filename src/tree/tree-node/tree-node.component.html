@@ -1,0 +1,17 @@
+<!--<div class="tree-node">-->
+<!--    <div *ngIf="node" class="node-value" [class.node-value-path]="node.is_result_path">{{ node.g }}</div>-->
+<!--    <div *ngIf="node?.children" class="children-container">-->
+<!--      <div *ngFor="let nd of node?.children" class="child">-->
+<!--        <app-tree-node [node]="nd"></app-tree-node>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div style="display: flex; flex-direction: column; align-items: center;  margin-left: 20px">
+  <div *ngIf="node" [class.node-value-path]="node.is_result_path" class="node-value">{{ node.g }}</div>
+  <div *ngIf="node?.children" class="children">
+    <div *ngFor="let nd of node?.children" >
+      <app-tree-node [node]="nd"></app-tree-node>
+    </div>
+  </div>
+</div>

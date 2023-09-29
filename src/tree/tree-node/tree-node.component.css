@@ -1,0 +1,54 @@
+
+.tree-node {
+  margin-bottom: 10px;
+}
+
+.children-container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 29px;
+  position: relative;
+}
+
+.children-container::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  height: 100%;
+  border-left: 1px dotted;
+}
+
+.node-value {
+  position: relative;
+}
+
+/*.node-value::after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  left: -29px;*/
+/*  width: 10px;*/
+/*  height: 1.1em;*/
+/*  border-left: 1px dotted;*/
+/*  border-bottom: 1px dotted;*/
+/*}*/
+
+
+.node-value-path {
+  color: red;
+}
+
+.children {
+  width: 100%;
+  max-width: fit-content;
+  position: relative;
+  display: flex;
+  gap: 5px
+}
+
+.children::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed;
+}
