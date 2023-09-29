@@ -172,20 +172,20 @@ export class AppComponent implements OnInit {
     let leafArray: StructuredNode[] = [];
     let iMin = 0;
     const initialState = [
-      [2, 1, 6],
-      [4, -1, 8],
-      [7, 5, 3],
-      // [2, 4, 3],
-      // [1, 8, 5],
-      // [7, -1, 6]
+      // [2, 1, 6],
+      // [4, -1, 8],
+      // [7, 5, 3],
+      [2, 4, 3],
+      [1, 8, 5],
+      [7, -1, 6]
     ];
     const finiteState = [
-      [1, 2, 3],
-      [8, -1, 4],
-      [7, 6, 5],
       // [1, 2, 3],
-      // [4, 5, 6],
-      // [7, 8, -1]
+      // [8, -1, 4],
+      // [7, 6, 5],
+      [1, 2, 3],
+      [4, 5, 6],
+      [7, 8, -1]
     ];
 
     const constructedInitialMatrix = constructNode(
@@ -208,8 +208,6 @@ export class AppComponent implements OnInit {
     let counter = 0;
     while (leafArray[iMin].g) {
 
-      counter = counter + 1;
-
       const minimalLeaf = leafArray[iMin];
       const minimalLeafChildren = constructChildrenNodes(
         minimalLeaf.matrix,
@@ -220,6 +218,7 @@ export class AppComponent implements OnInit {
       );
 
       minimalLeaf.children = minimalLeafChildren;
+
       minimalLeaf.is_path = true;
 
       leafArray = removeElem(leafArray, iMin);

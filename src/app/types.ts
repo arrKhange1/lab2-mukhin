@@ -11,6 +11,7 @@ export interface StructuredNode {
   parentEmptyCell: Cell;
   rate: number;
   children?: StructuredNode[];
+  parent?: StructuredNode;
   is_path?: boolean;
   is_finish?: boolean;
   is_result_path?: boolean;

@@ -1,25 +1,57 @@
 
 .tree-node {
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 
 .children-container {
+  padding: 10px 0 10px 0;
   display: flex;
+  gap: 5px;
   flex-direction: column;
   padding-left: 29px;
   position: relative;
 }
 
+.children-container:first {
+  margin-top: 10px;
+}
+
 .children-container::before {
   content: '';
   position: absolute;
-  left: -29px;
+  left: -0px;
+  bottom: -10px;
   height: 100%;
   border-left: 1px dotted;
 }
 
+.child {
+  position: relative;
+}
+
+.child::before {
+  content: "";
+  top: 25px;
+  left: -29px;
+  width: 10px;
+  height: 10px;
+  border-left: 1px dotted;
+  border-bottom: 1px dotted;
+  position: absolute;
+}
+
 .node-value {
   position: relative;
+  display: flex;
+  gap: 5px;
+}
+
+.node-value-info {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: black;
 }
 
 /*.node-value::after {*/
@@ -32,12 +64,11 @@
 /*  border-bottom: 1px dotted;*/
 /*}*/
 
-
 .node-value-path {
   color: red;
 }
 
-.children {
+/* .children {
   width: 100%;
   max-width: fit-content;
   position: relative;
@@ -51,4 +82,17 @@
   width: 100%;
   height: 1px;
   border-top: 1px dashed;
+} */
+
+
+/*  place to another component */
+
+table, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.2em;
+  text-align: center;
 }
