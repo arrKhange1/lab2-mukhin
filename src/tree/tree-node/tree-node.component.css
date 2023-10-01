@@ -31,24 +31,4 @@
   position: absolute;
 }
 
-.node-value {
-  position: relative;
-  display: flex;
-  gap: 5px;
-}
 
-.node-value-info {
-  padding: 10px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  color: black;
-}
-
-.node-value-path {
-  color: red;
-}
-
-.node-value-path-finish {
-  color: #4BB543;
-}

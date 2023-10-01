@@ -1,7 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {isDefined, StructuredNode} from "../../app/types";
-import {MatricesService} from "../../find-path/stores/matrices.service";
-import {filter, switchMap, tap} from "rxjs";
 
 @Component({
   selector: 'app-tree-node',

@@ -17,6 +17,7 @@ export interface StructuredNode {
   is_path?: boolean;
   is_finish?: boolean;
   is_result_path?: boolean;
+  is_start?: boolean;
 }
 
 export function isDefined<T>(arg: T | null | undefined): arg is T extends null | undefined ? never : T {
@@ -24,6 +25,8 @@ export function isDefined<T>(arg: T | null | undefined): arg is T extends null |
 }
 
 export class Tree {
+
+  private foundPath: StructuredNode[] = [];
   public leafArray: StructuredNode[] = [];
   public iMin = 0;
 
@@ -245,9 +248,18 @@ export class Tree {
     this.leafArray[this.iMin].is_finish = true;
     this.leafArray[this.iMin].is_path = true;
 
-    this.findTreePath(constructedInitialMatrix);
+    this.foundPath = this.findTreePath(constructedInitialMatrix);
 
+    constructedInitialMatrix.is_result_path = true;
+    constructedInitialMatrix.is_start = true;
     return constructedInitialMatrix;
+  }
+
+  public findResultPath(): StructuredNode[] {
+    const treeRoot = this.getTree();
+    if (!treeRoot) return [];
+    return [treeRoot, ...this.foundPath.slice(0, this.foundPath.length-1)];
+    // [constructedInitialMatrix, ...foundPath.slice(0, foundPath.length-1)]
   }
 
 }

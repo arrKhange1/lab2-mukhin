@@ -2,14 +2,8 @@
    <div
      *ngIf="node"
      class="node-value"
-     [class.node-value-path]="node.is_result_path"
-     [class.node-value-path-finish]="node.is_result_path && !node.children"
    >
-      <app-matrix [matrix]="node.matrix"></app-matrix>
-      <div class="node-value-info">
-        <span>Функция = {{ node.rate }}</span>
-        <span>Не на своих местах = {{ node.g }}</span>
-      </div>
+      <app-matrix [node]="node"></app-matrix>
    </div>
    <div *ngIf="node?.children" class="children-container">
      <div *ngFor="let nd of node?.children" class="child">

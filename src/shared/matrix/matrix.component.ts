@@ -8,5 +8,5 @@ import {StructuredNode} from "../../app/types";
 })
 export class MatrixComponent {
   @Input()
-  public matrix?: StructuredNode['matrix'];
+  public node?: StructuredNode;
 }

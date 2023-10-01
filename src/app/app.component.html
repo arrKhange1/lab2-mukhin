@@ -1,2 +1,5 @@
 <app-find-path></app-find-path>
 <app-tree-node *ngIf="(matricesService.foundTree$ | async) as foundTree" [node]="foundTree"></app-tree-node>
+<ng-container *ngIf="(matricesService.fountPath$ | async) as foundPath">
+  <app-result-path *ngIf="foundPath.length" [foundPath]="foundPath"></app-result-path>
+</ng-container>

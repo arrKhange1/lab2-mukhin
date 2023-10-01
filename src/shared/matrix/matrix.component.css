@@ -7,3 +7,24 @@ td {
   padding: 0.2em;
   text-align: center;
 }
+
+.node-value {
+  position: relative;
+  display: flex;
+  gap: 5px;
+}
+
+.node-value-info {
+  padding: 10px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.node-value-path {
+  color: red;
+}
+
+.node-value-path-finish {
+  color: #4BB543;
+}

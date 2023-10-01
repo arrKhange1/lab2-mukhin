@@ -1,7 +1,16 @@
-<table>
-  <tbody>
-  <tr *ngFor="let row of matrix">
-    <td *ngFor="let cell of row">{{ cell }}</td>
-  </tr>
-  </tbody>
-</table>
+<div class="node-value">
+  <table>
+    <tbody>
+    <tr *ngFor="let row of node?.matrix">
+      <td
+        [class.node-value-path]="node?.is_result_path"
+        [class.node-value-path-finish]="node?.is_result_path && !node?.children"
+        *ngFor="let cell of row">{{ cell }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="node-value-info">
+    <span>Функция = {{ node?.rate }}</span>
+    <span>Не на своих местах = {{ node?.g }}</span>
+  </div>
+</div>

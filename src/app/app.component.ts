@@ -14,16 +14,25 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit() {
+    // this.matricesService.findPathPressed$
+    //   .pipe(
+    //     withLatestFrom(this.matricesService.matrices$),
+    //     map(([_, matrices]) => matrices),
+    //     filter(isDefined),
+    //     tap(matrices => this.matricesService.findTree(matrices)),
+    //   )
+    //   .subscribe()
+
+    // ----- Раскомментируй, и все работает -----
+
     this.matricesService.findPathPressed$
       .pipe(
         withLatestFrom(this.matricesService.matrices$),
         map(([_, matrices]) => matrices),
         filter(isDefined),
-        tap(matrices => this.matricesService.findTree(matrices)),
+        tap(matrices => this.matricesService.findPath(matrices)),
       )
-      .subscribe()
-
-
+      .subscribe();
 
 
 
