@@ -29,7 +29,6 @@ export class MatrixInputComponent implements OnInit {
     this.matrixInputForm.valueChanges.pipe(
       map(form => form.matrix),
     ).subscribe((matrix: number[][]) => {
-      console.log(matrix)
       if (this.type === 'initial') this.matricesService.matrices$.next({ ...this.matricesService.matrices$.getValue() ?? {}, initialMatrix: matrix })
       if (this.type === 'finite') this.matricesService.matrices$.next({ ...this.matricesService.matrices$.getValue() ?? {}, finiteMatrix: matrix })
     })

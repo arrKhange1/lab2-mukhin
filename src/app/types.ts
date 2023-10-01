@@ -187,28 +187,37 @@ export class Tree {
     return [];
   }
 
+  private findEmptyCell(matrix: number[][]): Cell {
+    const emptyCellPos: Cell = { x: 2, y: 1 };
+    matrix.forEach((row, emptyCellXIndex) => {
+      const emptyCellYIndex = row.findIndex(num => num === -1);
+      if (emptyCellYIndex !== -1) {
+        emptyCellPos.x = emptyCellXIndex;
+        emptyCellPos.y = emptyCellYIndex;
+        return;
+      }
+    });
+    return emptyCellPos;
+  }
+
   public getTree(): StructuredNode | undefined {
 
-    console.log(111, this.initialMatrix, this.finiteMatrix)
+    console.log('matrices:', this.initialMatrix, this.finiteMatrix)
 
     if (!this.initialMatrix || !this.finiteMatrix) return;
+
+    const emptyCellIndex = this.findEmptyCell(this.initialMatrix);
+    console.log(emptyCellIndex, 'empty cell')
+
     const constructedInitialMatrix = this.constructNode(
       this.initialMatrix,
       this.finiteMatrix,
-      { // еще эти коорды определять
-        x: 2,
-        y: 1,
-      },
-      {
-        x: 2,
-        y: 1,
-      },
+      emptyCellIndex,
+      emptyCellIndex,
       -1
     );
 
     this.leafArray.push(constructedInitialMatrix);
-
-    console.log(this.leafArray)
 
     let g = constructedInitialMatrix.g;
     let counter = 0;
