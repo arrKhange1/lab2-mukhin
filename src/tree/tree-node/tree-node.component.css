@@ -1,19 +1,10 @@
 
-.tree-node {
-  /* margin-bottom: 10px; */
-}
-
 .children-container {
-  padding: 10px 0 10px 0;
   display: flex;
   gap: 5px;
   flex-direction: column;
-  padding-left: 29px;
+  padding: 10px 0 10px 29px;
   position: relative;
-}
-
-.children-container:first {
-  margin-top: 10px;
 }
 
 .children-container::before {
@@ -54,45 +45,10 @@
   color: black;
 }
 
-/*.node-value::after {*/
-/*  content: '';*/
-/*  position: absolute;*/
-/*  left: -29px;*/
-/*  width: 10px;*/
-/*  height: 1.1em;*/
-/*  border-left: 1px dotted;*/
-/*  border-bottom: 1px dotted;*/
-/*}*/
-
 .node-value-path {
   color: red;
 }
 
-/* .children {
-  width: 100%;
-  max-width: fit-content;
-  position: relative;
-  display: flex;
-  gap: 5px
-}
-
-.children::before {
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 1px;
-  border-top: 1px dashed;
-} */
-
-
-/*  place to another component */
-
-table, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-
-td {
-  padding: 0.2em;
-  text-align: center;
+.node-value-path-finish {
+  color: #4BB543;
 }

@@ -1,0 +1,12 @@
+<form action="">
+  <table *ngIf="matrixInputForm" [formGroup]="matrixInputForm">
+    <tbody formArrayName="matrix">
+      <tr *ngFor="let row of matrix.controls; let rowIndex = index" [formArrayName]="rowIndex">
+        <td *ngFor="let cell of getFormArray(row).controls; let cellIndex = index">
+          <input type="number" [formControlName]="cellIndex">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</form>
+

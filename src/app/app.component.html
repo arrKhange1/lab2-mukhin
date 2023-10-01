@@ -1,1 +1,2 @@
-<app-tree-node [node]="rootNode"></app-tree-node>
+<app-find-path></app-find-path>
+<app-tree-node *ngIf="(matricesService.foundTree$ | async) as foundTree" [node]="foundTree"></app-tree-node>

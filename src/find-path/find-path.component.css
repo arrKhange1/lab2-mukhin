@@ -1,0 +1,16 @@
+.find-path {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.find-path__matrices {
+  display: flex;
+  gap: 5rem;
+  margin-bottom: 1rem;
+}
+
+.find-path__calc-path:hover {
+  cursor: pointer;
+}
