@@ -6,6 +6,7 @@
 }
 
 .find-path__matrices {
+  width: 100%;
   display: flex;
   gap: 5rem;
   margin-bottom: 1rem;

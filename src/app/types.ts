@@ -18,6 +18,7 @@ export interface StructuredNode {
   is_finish?: boolean;
   is_result_path?: boolean;
   is_start?: boolean;
+  num_nodes: number;
 }
 
 export function isDefined<T>(arg: T | null | undefined): arg is T extends null | undefined ? never : T {
@@ -76,6 +77,7 @@ export class Tree {
       matrix: newMatrix,
       g: newG,
       h: h + 1,
+      num_nodes: 1,
       currEmptyCell: newCurrEmptyCell,
       parentEmptyCell: currEmptyCell,
       rate: newG + h + 1,
@@ -177,15 +179,18 @@ export class Tree {
   }
 
   public findTreePath(root: StructuredNode): StructuredNode[] {
-    if (!root.children && root.is_finish) { root.is_result_path = true; return [root]; }
+    if (!root.children && root.is_finish) { root.is_result_path = true; return [root] }
     if (root.children && root.children.length) {
+      let resToReturn: StructuredNode[] = [];
       for (const node of root.children) {
         const currPath = this.findTreePath(node);
         if (currPath[0] && currPath[0].is_result_path) {
           node.is_result_path = true;
-          return [node, ...currPath];
+          resToReturn = [node, ...currPath];
         }
+        root.num_nodes += node.num_nodes;
       }
+      return resToReturn;
     }
     return [];
   }
@@ -248,6 +253,7 @@ export class Tree {
     this.leafArray[this.iMin].is_finish = true;
     this.leafArray[this.iMin].is_path = true;
 
+    constructedInitialMatrix.num_nodes = 1;
     this.foundPath = this.findTreePath(constructedInitialMatrix);
 
     constructedInitialMatrix.is_result_path = true;
@@ -259,7 +265,6 @@ export class Tree {
     const treeRoot = this.getTree();
     if (!treeRoot) return [];
     return [treeRoot, ...this.foundPath.slice(0, this.foundPath.length-1)];
-    // [constructedInitialMatrix, ...foundPath.slice(0, foundPath.length-1)]
   }
 
 }

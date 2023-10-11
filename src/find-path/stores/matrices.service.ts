@@ -16,6 +16,7 @@ export class MatricesService {
   public matrices$ = new BehaviorSubject<Matrices | undefined>(undefined);
   public foundTree$ = new BehaviorSubject<StructuredNode | undefined>(undefined);
   public fountPath$ = new BehaviorSubject<StructuredNode[]>([]);
+
   public findTree(matrices: Matrices): void {
     const tree = new Tree(matrices.initialMatrix, matrices.finiteMatrix);
     this.foundTree$.next(tree.getTree());
@@ -23,7 +24,9 @@ export class MatricesService {
 
   public findPath(matrices: Matrices): void {
     const tree = new Tree(matrices.initialMatrix, matrices.finiteMatrix);
-    this.fountPath$.next(tree.findResultPath())
+    const foundPath = tree.findResultPath();
+    this.fountPath$.next(foundPath);
+    this.foundTree$.next(foundPath[0]);
   }
 
   constructor() { }

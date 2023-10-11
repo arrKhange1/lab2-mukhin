@@ -1,5 +1,14 @@
-<app-find-path></app-find-path>
-<app-tree-node *ngIf="(matricesService.foundTree$ | async) as foundTree" [node]="foundTree"></app-tree-node>
-<ng-container *ngIf="(matricesService.fountPath$ | async) as foundPath">
-  <app-result-path *ngIf="foundPath.length" [foundPath]="foundPath"></app-result-path>
+<ng-container *ngIf="{ foundTree: matricesService.foundTree$ | async, foundPath: matricesService.fountPath$ | async } as treeObj">
+  <app-find-path></app-find-path>
+
+  <div style="margin-bottom: 1rem;" *ngIf="treeObj.foundTree && treeObj.foundPath">
+    КПД: {{ treeObj.foundPath.length / treeObj.foundTree.num_nodes }} ~ {{ (treeObj.foundPath.length / treeObj.foundTree.num_nodes * 100) - (treeObj.foundPath.length / treeObj.foundTree.num_nodes * 100) % 1 }}%
+  </div>
+
+  <div style="display: flex; justify-content: space-between; padding: 0 1em;">
+    <app-tree-node *ngIf="treeObj.foundTree as foundTree" [node]="foundTree"></app-tree-node>
+    <ng-container *ngIf="treeObj.foundPath as foundPath">
+      <app-result-path *ngIf="foundPath.length" [foundPath]="foundPath"></app-result-path>
+    </ng-container>
+  </div>
 </ng-container>
